@@ -1,0 +1,12 @@
+#!/bin/bash
+# Launch first: signal-cli --singleuser socket
+#
+set -e
+cd src/
+SIGNAL_CLI=localhost:24250 \
+LTO_SSH=user@yourserver.com:22 \
+LTO_LOG_PATH=/path/to/your/LTO/log/lto.log \
+WATCH_INTERVAL_MIN=1 \
+MICROBLOCK_DELAY_SEC=100 \
+SSH_CONN_TIMEOUT=10 \
+exec python3 ./ltodog.py

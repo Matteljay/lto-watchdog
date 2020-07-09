@@ -1,0 +1,31 @@
+version: '3.5'
+services:
+
+    signal-cli:
+        image: matteljay/signal-cli
+        container_name: signal-cli
+        hostname: signal-cli
+        restart: always
+        user: user
+        volumes:
+            - ./signal:/home/user/.config/signal
+
+    ltodog:
+        image: matteljay/lto-watchdog
+        container_name: ltodog
+        hostname: ltodog
+        restart: always
+        user: user
+        environment:
+            SIGNAL_CLI: signal-cli:24250
+            LTO_SSH: user@yourserver.com:22
+            LTO_LOG_PATH: /path/to/your/LTO/log/lto.log
+            WATCH_INTERVAL_MIN: 3
+            MICROBLOCK_DELAY_SEC: 180
+            SSH_CONN_TIMEOUT: 10
+        volumes:
+            - ./ltodog:/home/user/.config/ltodog
+        depends_on:
+            - signal-cli
+
+# EOF
