@@ -62,7 +62,7 @@ class UtilStore:
         cmds = [
             'ssh -o BatchMode=yes -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null -o LogLevel=ERROR '
             f'-o ConnectTimeout={os.environ["SSH_CONN_TIMEOUT"]} -o IdentityFile=~/.config/ltodog/id_ssh '
-            f'-p {port} {host[0]} "date -u +\'%Y-%m-%d %H:%M:%S\' && tac {path} | grep -m1 MicroBlock"']
+            f'-p {port} {host[0]} "date +\'%Y-%m-%d %H:%M:%S\' && tac {path} | grep -m1 MicroBlock"']
         proc = subprocess.Popen(' '.join(cmds), shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
         output, error = proc.communicate()
         logging.debug(f'ssh output:\n{output.decode()}')
