@@ -1,4 +1,7 @@
 # LTO Watchdog
+
+### NOTICE: this project is replaced by [SignalBot LTO](https://github.com/Matteljay/signalbot-lto)
+
 ## Cryptocurrency server monitoring tool
 
 - License: MIT License
